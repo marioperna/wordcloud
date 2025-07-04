@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import WordCloud from 'wordcloud';
 
-const socket = io('http://localhost:3001');
+const socket = io('https://wordcloud-be.marioperna.com');
 
 function Room() {
   const { roomId } = useParams();
