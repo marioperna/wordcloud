@@ -68,9 +68,9 @@ io.on('connection', (socket) => {
     try {
       await pool.query(
         `INSERT INTO word_counts (room_id, word, count, ts)
-         VALUES ($1, $2, 10, NOW())
+         VALUES ($1, $2, 5, NOW())
          ON CONFLICT (room_id, word)
-         DO UPDATE SET count = word_counts.count + 1, ts = NOW()`,
+         DO UPDATE SET count = word_counts.count + 2, ts = NOW()`,
         [roomId, word]
       );
 

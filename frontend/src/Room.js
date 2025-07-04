@@ -64,7 +64,7 @@ function Room() {
       <div style={{ marginTop: '2rem' }}>
         <canvas 
           ref={canvasRef} 
-          style={{ width: '100vw', height: '80vh', display: 'block' }}
+          style={{ width: '800px', height: '600px', display: 'block' }}
         />
       </div>
     </div>
