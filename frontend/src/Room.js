@@ -2,9 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 import WordCloud from 'wordcloud';
-import { BACKEND_URL } from './customVar';
 
-const socket = io(BACKEND_URL);
+const socket = io(process.env.REACT_APP_BACKEND_URL);
 
 function Room() {
   const { roomId } = useParams();
