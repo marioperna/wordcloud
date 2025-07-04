@@ -7,7 +7,6 @@ const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
 const { Pool } = require('pg');
 
-const FRONTEND_URL = "https://wordcloud.marioperna.com";
 
 // Ensure environment variables are set
 if (!process.env.PG_USER || !process.env.PG_HOST || !process.env.PG_DATABASE || !process.env.PG_PASSWORD || !process.env.PG_PORT) {
@@ -28,13 +27,13 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: FRONTEND_URL,
+    origin: "https://wordcloud.marioperna.com",
     methods: ["GET", "POST"]
   },
 });
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", FRONTEND_URL);
+  res.header("Access-Control-Allow-Origin", "https://wordcloud.marioperna.com");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") {
