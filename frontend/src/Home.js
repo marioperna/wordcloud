@@ -5,7 +5,7 @@ function Home() {
   const navigate = useNavigate();
 
   const createRoom = async () => {
-    const res = await fetch('https://wordcloud-be.marioperna.com');
+    const res = await fetch('https://wordcloud-be.marioperna.com/create-room');
     const data = await res.json();
     navigate(`/room/${data.roomId}`);
   };
