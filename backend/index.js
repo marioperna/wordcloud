@@ -7,6 +7,12 @@ const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
 const { Pool } = require('pg');
 
+
+  console.log(process.env.PG_USER);
+  console.log(process.env.PG_HOST);
+  console.log(process.env.PG_DATABASE);
+  console.log(process.env.PG_PASSWORD);
+  console.log(process.env.PG_PORT);
 // Ensure environment variables are set
 if (!process.env.PG_USER || !process.env.PG_HOST || !process.env.PG_DATABASE || !process.env.PG_PASSWORD || !process.env.PG_PORT) {
   console.error('Missing required environment variables for PostgreSQL connection.');
