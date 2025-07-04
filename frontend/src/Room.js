@@ -23,14 +23,19 @@ function Room() {
 
   useEffect(() => {
     const entries = Object.entries(cloud).map(([text, count]) => [text, count]);
-    if (canvasRef.current && entries.length > 0) {
-      WordCloud(canvasRef.current, {
+    const canvas = canvasRef.current;
+  
+    if (canvas && entries.length > 0) {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight * 0.8;
+  
+      WordCloud(canvas, {
         list: entries,
-        gridSize: 10,
-        weightFactor: 10,
+        gridSize: 6, // parole più grandi
+        weightFactor: (count) => count * 8, // aumenta dimensione in base alla frequenza
         fontFamily: 'Impact',
         color: () => `hsl(${Math.random() * 360}, 100%, 40%)`,
-        rotateRatio: 0.5,
+        rotateRatio: 0.4,
         rotationSteps: 2,
         backgroundColor: '#ffffff',
       });
@@ -58,7 +63,10 @@ function Room() {
       </button>
 
       <div style={{ marginTop: '2rem' }}>
-        <canvas ref={canvasRef} width={800} height={500} />
+        <canvas 
+          ref={canvasRef} 
+          style={{ width: '100vw', height: '80vh', display: 'block' }}
+        />
       </div>
     </div>
   );
