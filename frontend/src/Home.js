@@ -3,10 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const navigate = useNavigate();
-  const BACKEND_URL = 'https://wordcloud-be.marioperna.com';
 
   const createRoom = async () => {
-    const res = await fetch(BACKEND_URL);
+    const res = await fetch('https://wordcloud-be.marioperna.com');
     const data = await res.json();
     navigate(`/room/${data.roomId}`);
   };
