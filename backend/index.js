@@ -68,10 +68,10 @@ io.on('connection', (socket) => {
   socket.on('new-word', async ({ roomId, word }) => {
     try {
       await pool.query(
-        `INSERT INTO word_counts (room_id, word, count)
-         VALUES ($1, $2, 1)
+        `INSERT INTO word_counts (room_id, word, count, ts)
+         VALUES ($1, $2, 1, NOW())
          ON CONFLICT (room_id, word)
-         DO UPDATE SET count = word_counts.count + 1`,
+         DO UPDATE SET count = word_counts.count + 1, ts = NOW()`,
         [roomId, word]
       );
 
